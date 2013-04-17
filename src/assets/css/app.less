@@ -1,19 +1,21 @@
-@import "elements.less";
-
 @font_size: 18px;
-
+html {
+  background-color: transparent;
+}
 a.adn-button, a.adn-button:visited {
-    background-color: #C75244;
-    color: #FFFFFF;
-    text-decoration: none;
-    display: inline-block;
-    font-size: @font_size;
-    line-height: @font_size;
-    padding: 10px 20px;
+  background-color: #C75244;
+  color: #FFFFFF;
+  text-decoration: none;
+  display: inline-block;
+  font-size: @font_size;
+  line-height: @font_size;
+  padding: 10px 20px;
 
-    .border-radius(@font_size, @font_size, @font_size, @font_size);
+  -webkit-border-radius: @font_size;
+  -moz-border-radius: @font_size;
+  border-radius: @font_size;
 
-    &:hover {
-        background-color: #CA5D4E;
-    }
+  &:hover {
+      background-color: #CA5D4E;
+  }
 }
