@@ -8,6 +8,5 @@ To start you will need npm, ruby & bundler installed on your machine. Then do th
 
 ```sh
 npm install
-bundle install
-grunt runserver
+grunt dev
 ```
