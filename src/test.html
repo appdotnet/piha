@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>ADN Social Button Test File Awesome</title>
+    </head>
+    <body>
+        <h1>The ADN Social Button Test Page</h1>
+        <hr>
+        <h2>A Share on App.net Button</h2>
+        <p>Link to a post intent with text of: @adn how is it going?<p>
+        <p>Once embedded it should be 100px wide, and 300px high.</p>
+        <p><a href='http://alpha.app.net/intent/post/?text=%40adn%20how%20is%20it%20going%3F' class='adn-button' target='_blank' data-text='@adn how is it going?' data-width="100" data-height="300">Share On App.net</a>
+        <hr>
+        <h2>A Follow Me on App.net Button</h2>
+        <p>Link to follow intent. Should let the user follow the @adn account</p>
+        <p><a href='http://alpha.app.net/intent/follow/?user_id=@adn' class='adn-button' target='_blank' data-user-id="@adn">Follow @adn on App.net</a></p>
+        <script type="text/javascript">
+            // Override defaults on the test page
+            window.ADN_IFRAME_BASE = 'http://127.0.0.1:9001/button.html?'; // We want to make sure we are simulating crossdomain behavior
+        </script>
+        <script src='http://localhost:9001/adn.js'></script>
+    </body>
+</html>
