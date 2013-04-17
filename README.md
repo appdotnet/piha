@@ -20,3 +20,20 @@ To test if your button build is working go to http://localhost:9001/test.html
 There are two deploy options supported: Heroku, and Amazon s3 / Cloudfrount.
 
 ### Heroku Deploy
+
+We assume that you have already installed the [Heroku tools](https://devcenter.heroku.com/articles/quickstart).
+
+Usually, your git root is what you deploy to heroku because of our build system we want to deploy a specific folder. In order to do that you must install a heroku plugin: [heroku-push](https://github.com/ddollar/heroku-push)
+
+To setup your heroku deploy do the following
+
+```
+# This assumes you have already install the heroku tools
+# Install the plugin
+heroku plugins:install https://github.com/ddollar/heroku-push
+heroku create
+grunt deploy:heroku
+```
+
+
+

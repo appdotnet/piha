@@ -101,6 +101,28 @@ module.exports = function (grunt) {
     }
   };
 
+  var deploy_options = {
+    heroku: true,
+    amazon: grunt.file.readJSON('amazon.json') || {}
+  };
+
+
+  var exec_options = {
+    heroku_deploy: {
+      cmd: 'heroku-push ./dist'
+    },
+    echo_name: {
+      cmd: function (firstName, lastName) {
+        var formattedName = [
+          lastName.toUpperCase(),
+          firstName.toUpperCase()
+        ].join(', ');
+
+        return 'echo ' + formattedName;
+      }
+    }
+  };
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: uglify_options,
@@ -111,7 +133,9 @@ module.exports = function (grunt) {
     connect: connect_options,
     jade: jade_options,
     watch: watch_options,
-    clean: ['./build', './dist']
+    clean: ['./build', './dist'],
+    exec: exec_options,
+    deploy: deploy_options
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -123,6 +147,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-hashmap');
+  grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('ensure_folders', function () {
     var folders = ['./dist', './dist/assets', './build', './build/assets'];
@@ -131,6 +156,17 @@ module.exports = function (grunt) {
         fs.mkdirSync(folder);
       }
     });
+  });
+
+  grunt.registerMultiTask('deploy', "deploy your button", function () {
+    if (this.target === 'amazon' && !this.data.bucket) {
+      grunt.log.error('To deploy to amazon you must create an amazon.json with the appropriate info');
+      return false;
+    }
+
+    if (this.target === 'heroku') {
+      grunt.task.run('exec:heroku_deploy');
+    }
   });
 
   grunt.registerTask('default', ['uglify']);
