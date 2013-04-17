@@ -27,7 +27,7 @@
     each(button.attributes, function (attr) {
       var prop_name = attr.name;
       if (prop_name.indexOf('data-') === 0) {
-        prop_name = prop_name.split('-', 2)[1].replace(/-/g, '_');
+        prop_name = prop_name.split('-').slice(1).join('_');
         properties[prop_name] = attr.value;
         prop_query.push(prop_name + '=' + encodeURIComponent(attr.value));
       }
@@ -36,7 +36,7 @@
     var iframe = document.createElement('iframe');
 
     var iframe_props = {
-      width: properties.width || 100,
+      width: properties.width || 250,
       height: properties.height || 50,
       src: iframe_base + prop_query.join('&'),
       scrolling: 'no',

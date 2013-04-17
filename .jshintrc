@@ -13,7 +13,9 @@
     "predef"        : [
         "module",
         "require",
-        "console"
+        "console",
+        "URI",
+        "_"
     ],
     "debug"         : false,
     "devel"         : false,

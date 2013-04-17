@@ -3,16 +3,24 @@ module.exports = function (grunt) {
 
   var uglify_options = {
     options: {
-      banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+      compress: false,
+      mangle: false
     },
     build: {
-      src: 'src/assets/js/app.js',
-      dest: 'build/assets/js/app.js'
+      files: {
+        'build/assets/js/app.js': [
+          'src/assets/js/deps/URI.min.js',
+          'src/assets/js/deps/underscore.js',
+          'build/assets/js/templates.js',
+          'src/assets/js/app.js'
+        ]
+      }
     }
   };
 
   var jshint_options = {
-    files: ['gruntfile.js', 'src/assets/js/*'],
+    files: ['gruntfile.js', 'src/assets/js/*.js'],
     options: grunt.file.readJSON('.jshintrc')
   };
 
@@ -73,6 +81,10 @@ module.exports = function (grunt) {
     test: {
       files: ["src/test.html"],
       tasks: ['build']
+    },
+    templates: {
+      files: ["src/assets/templates/*.html"],
+      tasks: ['build']
     }
   };
 
@@ -128,6 +140,14 @@ module.exports = function (grunt) {
     }
   };
 
+  var jst_options = {
+    compile: {
+      files: {
+        "build/assets/js/templates.js": ["src/assets/templates/*.html"]
+      }
+    }
+  };
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: uglify_options,
@@ -140,6 +160,7 @@ module.exports = function (grunt) {
     watch: watch_options,
     clean: ['./build', './dist'],
     // exec: exec_options,
+    jst: jst_options,
     deploy: deploy_options
   });
 
@@ -151,6 +172,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-hashmap');
   // grunt.loadNpmTasks('grunt-exec');
 
@@ -171,6 +193,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['uglify']);
-  grunt.registerTask('build', ['ensure_folders', 'jshint', 'uglify', 'less', 'hashmap', 'jade', 'copy']);
+  grunt.registerTask('build', ['ensure_folders', 'jst', 'jshint', 'uglify', 'less', 'hashmap', 'jade', 'copy']);
   grunt.registerTask('dev', ['build', 'connect', 'watch']);
 };
