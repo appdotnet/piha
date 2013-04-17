@@ -1,19 +1,17 @@
-@import "src/assets/css/_elements.less";
-@import "src/assets/css/normalize.css";
+@font_size: 18px;
 
-a.adn-button, a.adn-button:visited, a.adn-button:hover  {
+a.adn-button, a.adn-button:visited {
     background-color: #C75244;
     color: #FFFFFF;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
-    line-height: 18px;
+    font-size: @font_size;
+    line-height: @font_size;
     padding: 10px 20px;
-    border-radius: 18px;
-    -webkit-border-radius: 18px;
-    -moz-border-radius: 18px;
-}
 
-a.adn-button:hover {
-    background-color: #CA5D4E;
+    .border-radius(@font_size, @font_size, @font_size, @font_size);
+
+    &:hover {
+        background-color: #CA5D4E;
+    }
 }

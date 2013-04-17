@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         yuicompress: true
       },
       files: {
-        "build/assets/css/app.css": "src/assets/css/app.less"
+        "build/assets/css/app.css": ["src/assets/css/elements.less", "src/assets/css/normalize.less", "src/assets/css/app.less"]
       }
     }
   };
