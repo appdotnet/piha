@@ -45,11 +45,11 @@ module.exports = function (grunt) {
   var less_options = {
     production: {
       options: {
-        paths: ["/"],
+        paths: ["src/assets/css/"],
         yuicompress: true
       },
       files: {
-        "build/assets/css/app.css": ["src/assets/css/elements.less", "src/assets/css/normalize.less", "src/assets/css/app.less"]
+        "build/assets/css/app.css": ["normalize.less", "app.less"]
       }
     }
   };
