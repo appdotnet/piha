@@ -48,11 +48,11 @@ module.exports = function (grunt) {
   var watch_options = {
     css: {
       files: ['src/assets/css/app.less'],
-      tasks: ['less', 'make_dist_assets', 'hash', 'jade', 'copy']
+      tasks: ['less', 'ensure_folders', 'hash', 'jade', 'copy']
     },
     js: {
       files: jshint_options.files,
-      tasks: ['jshint', 'uglify', 'make_dist_assets', 'hash', 'jade', 'copy']
+      tasks: ['jshint', 'uglify', 'ensure_folders', 'hash', 'jade', 'copy']
     },
     html: {
       files: ["src/button.jade"],
@@ -110,13 +110,16 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-hash');
 
-  grunt.registerTask('make_dist_assets', function () {
-    if (!fs.existsSync('./dist/assets')) {
-      fs.mkdirSync('./dist/assets');
-    }
+  grunt.registerTask('ensure_folders', function () {
+    var folders = ['./dist', './dist/assets', './build', './build/assets'];
+    folders.forEach(function (folder) {
+      if (!fs.existsSync(folder)) {
+        fs.mkdirSync(folder);
+      }
+    });
   });
 
   grunt.registerTask('default', ['uglify']);
   grunt.registerTask('build', ['jshint', 'uglify', 'jade']);
-  grunt.registerTask('dev', ['jshint', 'uglify', 'less', 'make_dist_assets', 'hash', 'jade', 'copy', 'connect', 'watch']);
+  grunt.registerTask('dev', ['jshint', 'uglify', 'less', 'ensure_folders', 'hash', 'jade', 'copy', 'connect', 'watch']);
 };

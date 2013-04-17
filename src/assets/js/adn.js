@@ -28,7 +28,7 @@
     each(button.attributes, function (attr) {
       var prop_name = attr.name;
       if (prop_name.indexOf('data-') === 0) {
-        prop_name = prop_name.replace(/-/g, '_');
+        prop_name = prop_name.split('-', 1)[1].replace(/-/g, '_');
         properties[prop_name] = attr.value;
         prop_query.push(prop_name + '=' + encodeURIComponent(attr.value));
       }
