@@ -20,17 +20,17 @@ To configure the button you will add a number of data attributes to the anchor t
     </thead>
     <tbody>
         <tr>
-            <td>`data-type`</td>
-            <td>`share`, or `follow`</td>
+            <td><code>data-type</code></td>
+            <td><code>share</code>, or <code>follow</code></td>
             <td>The type of button you are embedding.</td>
         </tr>
         <tr>
-            <td>`data-width`</td>
+            <td><code>data-width</code></td>
             <td>integer</td>
             <td>The width of the embedded iframe.</td>
         </tr>
         <tr>
-            <td>`data-height`</td>
+            <td><code>data-height</code></td>
             <td>integer</td>
             <td>The height of the embedded iframe.</td>
         </tr>
@@ -55,7 +55,7 @@ the html:
     </thead>
     <tbody>
         <tr>
-            <td>`data-text`</td>
+            <td><code>data-text</code></td>
             <td>string</td>
             <td>Text of a pre-composed post.</td>
         </tr>
@@ -80,7 +80,7 @@ the html:
     </thead>
     <tbody>
         <tr>
-            <td>`data-user-id`</td>
+            <td><code>data-user-id`</td>
             <td>Either a @username, or numeric user id.</td>
             <td>The target user id.</td>
         </tr>
