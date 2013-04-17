@@ -95,12 +95,6 @@ After you have inserted all the buttons you want on a page you can then include 
 <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
 ```
 
-# Using our hosted version
-
-Right now we have two buttons. A Share on App.net, and Follw Me on App.net button. To start, you will insert links where you will want the buttons to show up. Then you will insert one script tag at the bottom of your page. When the script runs it will replace the link tags with iframes that will have buttons in them.
-
-We think this will provide reasonable protection against our site going down, while also providing you with a link that will still work.
-
 # Getting started hosting your own version
 
 Before you start you will need npm, installed on your machine, you can get it through your package manager.
