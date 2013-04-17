@@ -1,4 +1,5 @@
-*..sublime-*
+*sublime-*
 build/*
 dist/*
 node_modules
+asset_map.json
