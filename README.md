@@ -31,8 +31,9 @@ To setup your heroku deploy do the following
 # This assumes you have already install the heroku tools
 # Install the plugin
 heroku plugins:install https://github.com/ddollar/heroku-push
-heroku create
-grunt deploy:heroku
+heroku create --stack cedar
+grunt build deploy:heroku
+heroku push ./dist
 ```
 
 
