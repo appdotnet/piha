@@ -114,9 +114,9 @@ module.exports = function (grunt) {
 
   var exec_options = {
     heroku_deploy: {
-      cmd: 'heroku-push ./dist'
+      cmd: '/usr/bin/env heroku push ./dist'
     },
-    echo_name: {
+    amazon_deploy: {
       cmd: function (firstName, lastName) {
         var formattedName = [
           lastName.toUpperCase(),
@@ -139,7 +139,7 @@ module.exports = function (grunt) {
     jade: jade_options,
     watch: watch_options,
     clean: ['./build', './dist'],
-    exec: exec_options,
+    // exec: exec_options,
     deploy: deploy_options
   });
 
@@ -152,7 +152,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-hashmap');
-  grunt.loadNpmTasks('grunt-exec');
+  // grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('ensure_folders', function () {
     var folders = ['./dist/assets', './build/assets'];
@@ -162,13 +162,11 @@ module.exports = function (grunt) {
   });
 
   grunt.registerMultiTask('deploy', "deploy your button", function () {
-    if (this.target === 'amazon' && !this.data.bucket) {
-      grunt.log.error('To deploy to amazon you must create an amazon.json with the appropriate info');
-      return false;
-    }
-
+    grunt.log.write(this.target, this.data);
     if (this.target === 'heroku') {
-      grunt.task.run('exec:heroku_deploy');
+      // Create a fake index.php to trigger php mode in heroku
+      grunt.file.write('./dist/index.php', '');
+      grunt.file.write('./dist/.htaccess', 'php_flag engine off');
     }
   });
 
