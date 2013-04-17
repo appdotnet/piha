@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     },
     build: {
       src: 'src/assets/js/app.js',
-      dest: 'build/assets/js/app.min.js'
+      dest: 'build/assets/js/app.js'
     }
   };
 
@@ -17,10 +17,22 @@ module.exports = function (grunt) {
   };
 
   var hash_options = {
-    src: './build/assets/**/*.*',
-    mapping: 'asset_map.json',
-    dest: './dist/assets/'
+    options: {
+      output: 'asset_map.json',
+      merge: true
+    },
+    js: {
+      cwd: 'build/assets/js/',
+      src: '*.js',
+      dest: 'dist/assets/js/'
+    },
+    css: {
+      cwd: 'build/assets/css/',
+      src: '*.css',
+      dest: 'dist/assets/css/'
+    }
   };
+
 
   var less_options = {
     production: {
@@ -48,19 +60,19 @@ module.exports = function (grunt) {
   var watch_options = {
     css: {
       files: ['src/assets/css/app.less'],
-      tasks: ['less', 'ensure_folders', 'hash', 'jade', 'copy']
+      tasks: ['build']
     },
     js: {
       files: jshint_options.files,
-      tasks: ['jshint', 'uglify', 'ensure_folders', 'hash', 'jade', 'copy']
+      tasks: ['build']
     },
     html: {
       files: ["src/button.jade"],
-      tasks: ['jade']
+      tasks: ['build']
     },
     test: {
       files: ["src/test.html"],
-      tasks: ['copy']
+      tasks: ['build']
     }
   };
 
@@ -93,12 +105,13 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     uglify: uglify_options,
     jshint: jshint_options,
-    hash: hash_options,
+    hashmap: hash_options,
     less: less_options,
     copy: copy_options,
     connect: connect_options,
     jade: jade_options,
-    watch: watch_options
+    watch: watch_options,
+    clean: ['./build', './dist']
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -108,7 +121,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-hash');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-hashmap');
 
   grunt.registerTask('ensure_folders', function () {
     var folders = ['./dist', './dist/assets', './build', './build/assets'];
@@ -120,6 +134,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['uglify']);
-  grunt.registerTask('build', ['jshint', 'uglify', 'jade']);
-  grunt.registerTask('dev', ['jshint', 'uglify', 'less', 'ensure_folders', 'hash', 'jade', 'copy', 'connect', 'watch']);
+  grunt.registerTask('build', ['ensure_folders', 'jshint', 'uglify', 'less', 'hashmap', 'jade', 'copy']);
+  grunt.registerTask('dev', ['build', 'connect', 'watch']);
 };

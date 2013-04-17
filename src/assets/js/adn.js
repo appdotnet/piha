@@ -22,7 +22,6 @@
   };
 
   each(doc.querySelectorAll('.adn-button'), function (button) {
-    console.log('gots a button');
     var properties = {};
     var prop_query = [];
     each(button.attributes, function (attr) {
