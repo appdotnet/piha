@@ -101,9 +101,14 @@ module.exports = function (grunt) {
     }
   };
 
+  var amazon_conf = {};
+  try {
+    amazon_conf = grunt.file.readJSON('amazon.json');
+  } catch (e) {}
+
   var deploy_options = {
     heroku: true,
-    amazon: grunt.file.readJSON('amazon.json') || {}
+    amazon: amazon_conf
   };
 
 
@@ -150,11 +155,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('ensure_folders', function () {
-    var folders = ['./dist', './dist/assets', './build', './build/assets'];
+    var folders = ['./dist/assets', './build/assets'];
     folders.forEach(function (folder) {
-      if (!fs.existsSync(folder)) {
-        fs.mkdirSync(folder);
-      }
+      grunt.file.mkdir(folder);
     });
   });
 
