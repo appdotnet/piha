@@ -5,6 +5,7 @@ We wanted to make our social buttons as flexible as possible, so instead of forc
 **If you don't want to host your own buttons**, we still have a hosted version you can use if you don't want to go through the process of setting it up yourself. Just follow the same configuration process, and use our hosted JavaScript.
 
 ## The Buttons
+* * *
 
 To insert a button into a webpage you will start by creating an anchor tag. Even if the javascript doesn't load this anchor tag should still be able to complete the action it was intended for.
 
@@ -89,19 +90,21 @@ HTML:
     </tbody>
 </table>
 
-## The Script
+# The Script
+* * *
 
-After you have inserted all the buttons you want on a page, you then include a script tag. If you are using our hosted version, here's the snippet:
+After you have inserted all the buttons you want on a page, you then need to include a script tag. This is where the instructions will deviate depending on if you are using our hosted version or your own self hosted version. If you are using our hosted version, here's the snippet:
 
 ```
 <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
 ```
 
-If you are self hosting, just substitute in your URL.
+If you are self hosting, just substitute in the URL to your version. Below are instructions to get you started.
 
-# Getting started hosting your own version
+# Getting Started Hosting Your Own Version
+* * *
 
-NOTE: We are assuming you are in a linux environment. Commands will be different on other platforms.
+**NOTE: We are assuming you are in a linux environment. Commands will be different on other platforms.**
 
 Before you start you will need npm installed on your machine, which you can get through your package manager or from [nodejs.org](http://nodejs.org/download/ "NodeJS downloads").
 
@@ -138,7 +141,7 @@ There are any number of ways you could self host these files; we wanted to highl
 
 We assume that you have already installed the [Heroku Toolbelt](https://toolbelt.heroku.com/ "Heroku Toolbelt"). There is a detailed guide at [Getting Started with Heroku](https://devcenter.heroku.com/articles/quickstart "Getting Started with Heroku").
 
-Usually, your git root is what you deploy to heroku, but because of our build system we want to deploy a specific folder. In order to do that you must install a heroku plugin: [heroku-push](https://github.com/ddollar/heroku-push)
+Usually, your git root is what you deploy to heroku, but because of our build system we want to deploy a specific folder. In order to do that you must install a heroku plugin: [heroku-push](https://github.com/ddollar/heroku-push).
 
 To setup your Heroku deploy do the following:
 
@@ -155,7 +158,7 @@ At this point you should be able to go to something like `https://app-name-on-he
 
 There are many ways to host things on AWS, this is only meant to cover hosting our social buttons on Cloudfront via a S3 backend. For instance, you could remove Cloudfront from this equation and just use static website hosting on a S3 bucket.
 
-We assume that you have created a S3 bucket in AWS, and that you've also created a Cloudfront distribution that points to the bucket (setting these up is outside the scope of this document, refer to AWS documentation on how to do it). Also, you'll need at least s3cmd version 1.1.0-beta3 installed. You can get it at their website, [s3cmd.org](http://s3tools.org/download).
+We assume that you have created a S3 bucket in AWS, and that you've also created a Cloudfront distribution that points to the bucket (setting these up is outside the scope of this document, refer to AWS documentation on how to do it). Also, you'll need at least s3cmd version 1.1.0-beta3 installed. You can get it at their website, [s3cmd.org](http://s3tools.org/download "S3cmd dowloads").
 
 First, you need to setup s3cmd:
 
