@@ -2,7 +2,7 @@
 
 We wanted to make our social buttons as flexible as possible, so instead of forcing you to use our hosted version of them, we are opening them up so you can self host them. Below we've documented how to deploy them to 2 different services: Heroku and AWS.
 
-Of course, we still have a hosted version you can use if you don't want to go through the process of setting it up yourself.
+**If you don't want to host your own buttons**, we still have a hosted version you can use if you don't want to go through the process of setting it up yourself. Just follow the same configuration process, and use our hosted JavaScript.
 
 ## The Buttons
 
