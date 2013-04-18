@@ -44,7 +44,7 @@ To configure the button you will add a number of data attributes to the anchor t
 HTML:
 
 ```
-<e href='https://alpha.app.net/intent/post/?text=hello+world' data-type='share' data-width='167' data-height='38' data-text='hello world'>
+<a href='https://alpha.app.net/intent/post/?text=hello+world' data-type='share' data-width='167' data-height='38' data-text='hello world'>...</a>
 ```
 
 <table>
@@ -69,7 +69,7 @@ HTML:
 HTML:
 
 ```
-<a href='https://alpha.app.net/intent/follow/?user_id=@adn' data-type='follow' data-width='204' data-height='38' data-user-id='@adn'>
+<a href='https://alpha.app.net/intent/follow/?user_id=@adn' data-type='follow' data-width='204' data-height='38' data-user-id='@adn'>...</a>
 ```
 
 <table>
