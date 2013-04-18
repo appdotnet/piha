@@ -97,7 +97,7 @@ After you have inserted all the buttons you want on a page, you then include a s
 <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
 ```
 
-If you are self hosting, just substitute in your right URL.
+If you are self hosting, just substitute in your URL.
 
 # Getting started hosting your own version
 
@@ -105,7 +105,7 @@ NOTE: We are assuming you are in a linux environment. Commands will be different
 
 Before you start you will need npm installed on your machine, which you can get through your package manager or from [nodejs.org](http://nodejs.org/download/ "NodeJS downloads").
 
-First off, you need 'grunt-cli' install globally:
+First off, you need 'grunt-cli' installed globally:
 
 ```sh
 sudo npm install -g grunt-cli
@@ -153,7 +153,7 @@ At this point you should be able to go to something like `https://app-name-on-he
 
 ### AWS Deploy
 
-There are many way to host things on AWS, this is only meant to cover hosting our social buttons on Cloudfront via a S3 backend. For instance, you could remove Cloudfront from this equation and just use static website hosting on a S3 bucket.
+There are many ways to host things on AWS, this is only meant to cover hosting our social buttons on Cloudfront via a S3 backend. For instance, you could remove Cloudfront from this equation and just use static website hosting on a S3 bucket.
 
 We assume that you have created a S3 bucket in AWS, and that you've also created a Cloudfront distribution that points to the bucket (setting these up is outside the scope of this document, refer to AWS documentation on how to do it). Also, you'll need at least s3cmd version 1.1.0-beta3 installed. You can get it at their website, [s3cmd.org](http://s3tools.org/download).
 
