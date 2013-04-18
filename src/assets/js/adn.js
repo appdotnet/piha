@@ -1,5 +1,5 @@
 (function (win, doc) {
-  var iframe_base = win.ADN_IFRAME_BASE || 'https://d2zh9g63fcvyrq.cloudfront.net/index.html?';
+  var iframe_base = win.ADN_IFRAME_BASE || 'https://d2zh9g63fcvyrq.cloudfront.net/button.html?';
   var nativeForEach = Array.prototype.forEach;
   var breaker = {};
   var each = function (obj, iterator, context) {

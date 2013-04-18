@@ -97,7 +97,7 @@ After you have inserted all the buttons you want on a page, you then include a s
 <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
 ```
 
-If you are self hosting, just substitute in your right URL.
+If you are self hosting, just substitute in your URL.
 
 # Getting started hosting your own version
 
