@@ -4,8 +4,6 @@ We wanted to make our social buttons as flexible as possible, so instead of forc
 
 Of course, we still have a hosted version you can use if you don't want to go through the process of setting it up yourself.
 
-Instead of forcing everyone to run code hosted on our servers we decided to do something new with social buttons. You can host these buttons yourself. We have even created and two different hosting methods: heroku, and aws. Also, if you decide that you would rather not host these buttons yourself, you can use our hosted version.
-
 ## The Buttons
 
 To insert a button into a webpage you will start by creating an anchor tag. Even if the javascript doesn't load this anchor tag should still be able to complete the action it was intended for.
@@ -105,7 +103,7 @@ If you are self hosting, just substitute in your right URL.
 
 NOTE: We are assuming you are in a linux environment. Commands will be different on other platforms.
 
-Before you start you will need npm, installed on your machine, you can get it through your package manager.
+Before you start you will need npm installed on your machine, which you can get through your package manager or from [nodejs.org](http://nodejs.org/download/ "NodeJS downloads").
 
 First off, you need 'grunt-cli' install globally:
 
@@ -120,9 +118,9 @@ npm install
 grunt dev
 ```
 
-You should now have a server running on http://localhost:9001.
+You should now have a server running on `http://localhost:9001`.
 
-To test if your button build is working go to http://localhost:9001/test.html
+To test if your button build is working go to `http://localhost:9001/test.html`.
 
 To just build the buttons you can run:
 
@@ -130,7 +128,7 @@ To just build the buttons you can run:
 grunt build
 ```
 
-To create the 'dist/' directory and assets you need to deploy.
+To create the `dist/` directory and assets you need to deploy.
 
 ## Deploying
 
@@ -138,14 +136,13 @@ There are any number of ways you could self host these files; we wanted to highl
 
 ### Heroku Deploy
 
-We assume that you have already installed the [Heroku tools](https://devcenter.heroku.com/articles/quickstart).
+We assume that you have already installed the [Heroku Toolbelt](https://toolbelt.heroku.com/ "Heroku Toolbelt"). There is a detailed guide at [Getting Started with Heroku](https://devcenter.heroku.com/articles/quickstart "Getting Started with Heroku").
 
 Usually, your git root is what you deploy to heroku, but because of our build system we want to deploy a specific folder. In order to do that you must install a heroku plugin: [heroku-push](https://github.com/ddollar/heroku-push)
 
 To setup your Heroku deploy do the following:
 
 ```sh
-# This assumes you have already install the heroku tools
 heroku plugins:install https://github.com/ddollar/heroku-push
 heroku create --stack cedar
 grunt build deploy:heroku
@@ -172,4 +169,4 @@ It will walk you through the setup, and have you enter in both your Access Key a
 s3cmd --cf-invalidate sync <path_to_git_repo>/dist/ s3://<bucket_name>/
 ```
 
-For every file that is synced, the '--cf-invalidate' argument will scan your Cloudfront distributions for the one hosting that file, and send a invalidation request.
+For every file that is synced, the `--cf-invalidate` argument will scan your Cloudfront distributions for the one hosting that file, and send a invalidation request.
