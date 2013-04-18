@@ -1,10 +1,14 @@
 # Piha: ADN Social Buttons
 
-Instead of forcing everyone to run code hosted on our servers we decided to do something new with social buttons. You can host these buttons your self. We have even created and two different hosting methods: heroku, and aws. Also, if you decide that you would rather not host these buttons your self, you can use our hosted version.
+We wanted to make our social buttons as flexible as possible, so instead of forcing you to use our hosted version of them, we are opening them up so you can self host them. Below we've documented how to deploy them to 2 different services: Heroku and AWS.
+
+Of course, we still have a hosted version you can use if you don't want to go through the process of setting it up yourself.
+
+Instead of forcing everyone to run code hosted on our servers we decided to do something new with social buttons. You can host these buttons yourself. We have even created and two different hosting methods: heroku, and aws. Also, if you decide that you would rather not host these buttons yourself, you can use our hosted version.
 
 ## The Buttons
 
-To insert a button into a webpage you will start by creating an anchor tag. Even if the javascript doesn't load this anchor tag should still be able complete the action it was intended for.
+To insert a button into a webpage you will start by creating an anchor tag. Even if the javascript doesn't load this anchor tag should still be able to complete the action it was intended for.
 
 To configure the button you will add a number of data attributes to the anchor tag. There are a few common attributes and some that are specific to each button.
 
@@ -39,10 +43,10 @@ To configure the button you will add a number of data attributes to the anchor t
 
 ### Share On App.net Button
 
-the html:
+HTML:
 
 ```
-<a href='https://alpha.app.net/intent/post/?text=hello+world' data-type='share' data-width='167' data-height='38' data-text='hello world'>
+<e href='https://alpha.app.net/intent/post/?text=hello+world' data-type='share' data-width='167' data-height='38' data-text='hello world'>
 ```
 
 <table>
@@ -64,7 +68,7 @@ the html:
 
 ### Follow Me on App.net Button
 
-the html:
+HTML:
 
 ```
 <a href='https://alpha.app.net/intent/follow/?user_id=@adn' data-type='follow' data-width='204' data-height='38' data-user-id='@adn'>
@@ -89,13 +93,17 @@ the html:
 
 ## The Script
 
-After you have inserted all the buttons you want on a page you can then include a script tag. You can use our hosted version, or you can host your own.
+After you have inserted all the buttons you want on a page, you then include a script tag. If you are using our hosted version, here's the snippet:
 
 ```
 <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
 ```
 
+If you are self hosting, just substitute in your right URL.
+
 # Getting started hosting your own version
+
+NOTE: We are assuming you are in a linux environment. Commands will be different on other platforms.
 
 Before you start you will need npm, installed on your machine, you can get it through your package manager.
 
@@ -126,7 +134,7 @@ To create the 'dist/' directory and assets you need to deploy.
 
 ## Deploying
 
-There are two deploy options supported: Heroku, and Amazon S3/Cloudfrount.
+There are any number of ways you could self host these files; we wanted to highlight 2 of the easier ones: Heroku and AWS.
 
 ### Heroku Deploy
 
@@ -134,7 +142,7 @@ We assume that you have already installed the [Heroku tools](https://devcenter.h
 
 Usually, your git root is what you deploy to heroku, but because of our build system we want to deploy a specific folder. In order to do that you must install a heroku plugin: [heroku-push](https://github.com/ddollar/heroku-push)
 
-To setup your heroku deploy do the following:
+To setup your Heroku deploy do the following:
 
 ```sh
 # This assumes you have already install the heroku tools
@@ -146,7 +154,7 @@ heroku push ./dist
 
 At this point you should be able to go to something like `https://app-name-on-heroku.herokuapp.com/test.html` and see the test page.
 
-### S3/Cloudfront Deploy
+### AWS Deploy
 
 There are many way to host things on AWS, this is only meant to cover hosting our social buttons on Cloudfront via a S3 backend. For instance, you could remove Cloudfront from this equation and just use static website hosting on a S3 bucket.
 
