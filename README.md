@@ -82,7 +82,7 @@ HTML:
     </thead>
     <tbody>
         <tr>
-            <td><code>data-user-id`</td>
+            <td><code>data-user-id</code></td>
             <td>Either a @username, or numeric user id.</td>
             <td>The target user id.</td>
         </tr>
