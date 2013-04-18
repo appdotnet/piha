@@ -5,7 +5,6 @@ We wanted to make our social buttons as flexible as possible, so instead of forc
 **If you don't want to host your own buttons**, we still have a hosted version you can use if you don't want to go through the process of setting it up yourself. Just follow the same configuration process, and use our hosted JavaScript.
 
 ## The Buttons
-* * *
 
 To insert a button into a webpage you will start by creating an anchor tag. Even if the javascript doesn't load this anchor tag should still be able to complete the action it was intended for.
 
